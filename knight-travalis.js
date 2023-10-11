@@ -101,9 +101,18 @@ const knightMoves = (start, end) =>
 {
     let startPos = new Movement(start[0], start[1]);
     let endPos = new Movement(end[0], end[1]);    
-    populateBoard();
 
-    tryMovement(startPos, endPos);
+    if(!isValidPosition(startPos.x) || !isValidPosition(startPos.y) ||
+    !isValidPosition(endPos.x) || !isValidPosition(endPos.y))
+    {
+        console.log("Invalid coords (out of the board)");
+
+    } else {
+
+        populateBoard();
+
+        tryMovement(startPos, endPos);
+    }
 }
 
 const tryMovement = (start, end) => {
@@ -159,3 +168,4 @@ knightMoves([0,0],[3,3]);
 knightMoves([0,0],[1,2]);
 knightMoves([3,3],[0,0]);
 knightMoves([0,0],[7,1]);
+knightMoves([0,0],[9,1]);
